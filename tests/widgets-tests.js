@@ -1,4 +1,4 @@
-describe('widgets tests', function () {
+describe('the widgets service', function () {
 
 	var widgets;
 
@@ -12,7 +12,7 @@ describe('widgets tests', function () {
 
 	});
 
-	it('the widgets service should be registered with the injector', function () {
+	it('should be registered with the injector', function () {
 		expect(widgets).toBeDefined();
 	})
 });

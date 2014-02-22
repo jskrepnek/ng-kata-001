@@ -1,4 +1,4 @@
-describe ('widgets controller tests', function () {
+describe ('the widgets controller', function () {
 
 	var scope, widgetsController;
 
@@ -15,7 +15,7 @@ describe ('widgets controller tests', function () {
 
 	});
 
-	it('the widgets controller should be registered as a controller', function () {
+	it('should be registered as a controller', function () {
 		expect(widgetsController).toBeDefined();
 	});
 
