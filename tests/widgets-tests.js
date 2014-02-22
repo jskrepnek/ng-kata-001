@@ -14,5 +14,13 @@ describe('the widgets service', function() {
 
 	it('should be registered with the injector', function() {
 		expect(widgets).toBeDefined();
-	})
+	});
+
+	describe('query action', function () {
+
+		it('should be defined', function () {
+			expect(widgets.query).toBeDefined();
+		});
+
+	});
 });
