@@ -1,18 +1,18 @@
-describe('the widgets service', function () {
+describe('the widgets service', function() {
 
 	var widgets;
 
-	beforeEach(function () {
+	beforeEach(function() {
 
 		module('app');
 
-		inject(function ($injector) {
+		inject(function($injector) {
 			widgets = $injector.get('Widgets');
 		})
 
 	});
 
-	it('should be registered with the injector', function () {
+	it('should be registered with the injector', function() {
 		expect(widgets).toBeDefined();
 	})
 });
