@@ -17,7 +17,7 @@ describe('the widgets controller', function() {
 
 	});
 
-	it('should be registered as a controller', function() {
+	it('should be registered with the injector as a controller', function() {
 		expect(widgetsController).toBeDefined();
 	});
 
