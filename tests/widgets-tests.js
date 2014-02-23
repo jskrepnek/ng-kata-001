@@ -27,6 +27,33 @@ describe('the widgets service', function() {
 		expect(widgets).toBeDefined();
 	});
 
+	describe('get action', function () {
+
+		it('should be defined', function () {
+			expect(widgets.get).toBeDefined();
+		});
+
+		describe('when invoked for a valid object', function () {
+
+			var widget = {
+				id: 123,
+				name: 'thrappy'
+			};
+
+			beforeEach(function () {
+				$httpBackend
+					.when('GET', uri + '?id=123')
+					.respond(widget);
+			});
+
+			it('should return the expected Widget', function () {
+				var result = widgets.get({id: 123});
+				$httpBackend.flush();
+				expect(result).toEqualData(widget);
+			});
+		});
+	});
+
 	describe('query action', function() {
 
 		it('should be defined', function() {
@@ -55,7 +82,5 @@ describe('the widgets service', function() {
 				expect(result).toEqualData(data);
 			});
 		});
-
-
 	});
 });
