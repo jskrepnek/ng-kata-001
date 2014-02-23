@@ -71,8 +71,16 @@ describe('the widgets service', function() {
 
 			beforeEach(function() {
 				$httpBackend
-					.when('GET', uri + '/123')
+					.expect('GET', uri + '/123')
 					.respond(widget);
+			});
+
+			it('should send a http GET request', function() {
+				widgets.get({
+					id: 123
+				});
+				$httpBackend.flush();
+				$httpBackend.verifyNoOutstandingExpectation();
 			});
 
 			it('should return the expected Widget', function() {
