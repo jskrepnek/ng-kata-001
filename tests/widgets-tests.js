@@ -27,27 +27,58 @@ describe('the widgets service', function() {
 		expect(widgets).toBeDefined();
 	});
 
-	describe('get action', function () {
+	describe('remove action', function() {
 
-		it('should be defined', function () {
+		it('should be defined', function() {
+			expect(widgets.remove).toBeDefined();
+		});
+
+		describe('when invoked', function() {
+
+			beforeEach(function() {
+				$httpBackend
+					.expectDELETE(uri + '/123')
+					.respond(201, '');
+			});
+
+			afterEach(function() {
+				$httpBackend.verifyNoOutstandingExpectation();
+				$httpBackend.verifyNoOutstandingRequest();
+			});
+
+			it('should send a DELETE request for the widget', function() {
+				widgets.remove({
+					id: 123
+				});
+				$httpBackend.flush();
+			});
+
+		})
+	});
+
+	describe('get action', function() {
+
+		it('should be defined', function() {
 			expect(widgets.get).toBeDefined();
 		});
 
-		describe('when invoked for a valid object', function () {
+		describe('when invoked for a valid object', function() {
 
 			var widget = {
 				id: 123,
 				name: 'thrappy'
 			};
 
-			beforeEach(function () {
+			beforeEach(function() {
 				$httpBackend
-					.when('GET', uri + '?id=123')
+					.when('GET', uri + '/123')
 					.respond(widget);
 			});
 
-			it('should return the expected Widget', function () {
-				var result = widgets.get({id: 123});
+			it('should return the expected Widget', function() {
+				var result = widgets.get({
+					id: 123
+				});
 				$httpBackend.flush();
 				expect(result).toEqualData(widget);
 			});
