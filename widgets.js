@@ -11,6 +11,9 @@ angular.module('app').factory('Widgets', ['$resource',
 				method: 'GET',
 				isArray: true,
 				headers: authHeaders
+			},
+			create: {
+				method: 'POST'
 			}
 		});
 	}
