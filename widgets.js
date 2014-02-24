@@ -1,5 +1,5 @@
-angular.module('app').factory('Widgets', [
-	function() {
-		return {};
+angular.module('app').factory('Widgets', ['$resource',
+	function($resource) {
+		return $resource('url');;
 	}
 ]);
