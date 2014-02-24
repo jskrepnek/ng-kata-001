@@ -34,5 +34,21 @@ describe('the widgets service', function() {
 			
 			$httpBackend.verifyNoOutstandingExpectation();
 		});
+
+		it('should set the appropriate authentication headers', function() {
+
+			$httpBackend
+				.expectGET('https://api.parse.com/1/classes/widgets', {
+					"Accept":"application/json, text/plain, */*",
+					'X-Parse-Application-Id': 'kXIwOzlPDyw0Ix1r8z1RlaNyK10CfDO4ww9067ZW',
+					'X-Parse-REST-API-Key': 'WIQ1QYfu1KHbEbRlJp9X7awwwjqqcJu54cOuBJTJ'
+				})
+				.respond([]);
+
+			widgets.query();
+			$httpBackend.flush();
+
+			$httpBackend.verifyNoOutstandingExpectation();
+		});
 	});
 });
