@@ -1,5 +1,5 @@
 angular.module('app').factory('Widgets', ['$resource',
 	function($resource) {
-		return $resource('url');;
+		return $resource('https://api.parse.com/1/classes/widgets');;
 	}
 ]);

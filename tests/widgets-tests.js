@@ -1,6 +1,6 @@
 describe('the widgets service', function() {
 
-	var widgets;
+	var widgets, $httpBackend;
 
 	beforeEach(function() {
 
@@ -8,6 +8,7 @@ describe('the widgets service', function() {
 
 		inject(function($injector) {
 			widgets = $injector.get('Widgets');
+			$httpBackend = $injector.get('$httpBackend');
 		})
 
 	});
@@ -17,8 +18,21 @@ describe('the widgets service', function() {
 	})
 
 	describe('query action', function() {
+		
 		it('should be defined', function() {
 			expect(widgets.query).toBeDefined();
+		});
+
+		it('should make a HTTP GET request to the correct URL', function() {
+
+			$httpBackend
+				.expectGET('https://api.parse.com/1/classes/widgets')
+				.respond([]);
+
+			widgets.query();
+			$httpBackend.flush();
+			
+			$httpBackend.verifyNoOutstandingExpectation();
 		});
 	});
 });
