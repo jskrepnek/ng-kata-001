@@ -21,7 +21,30 @@ describe('the widgets service', function() {
 
 		it('should be defined', function() {
 			expect(widgets.create).toBeDefined();
-		})
+		});
+
+		it('should make a HTTP POST request to the correct URL with the expected data and headers', function() {
+
+			var data = {
+				name: 'test widget'
+			};
+
+			$httpBackend
+				.expectPOST('https://api.parse.com/1/classes/widgets', data, {
+					"Accept": "application/json, text/plain, */*",
+					"Content-Type": "application/json;charset=utf-8",
+					'X-Parse-Application-Id': 'kXIwOzlPDyw0Ix1r8z1RlaNyK10CfDO4ww9067ZW',
+					'X-Parse-REST-API-Key': 'WIQ1QYfu1KHbEbRlJp9X7awwwjqqcJu54cOuBJTJ'
+				})
+				.respond(201, '');
+
+			var widget = new widgets();
+			widget.name = 'test widget';
+			widget.$create();
+			
+			$httpBackend.flush();			
+			$httpBackend.verifyNoOutstandingExpectation();
+		});
 
 	});
 
@@ -47,7 +70,7 @@ describe('the widgets service', function() {
 
 			$httpBackend
 				.expectGET('https://api.parse.com/1/classes/widgets', {
-					"Accept":"application/json, text/plain, */*",
+					"Accept": "application/json, text/plain, */*",
 					'X-Parse-Application-Id': 'kXIwOzlPDyw0Ix1r8z1RlaNyK10CfDO4ww9067ZW',
 					'X-Parse-REST-API-Key': 'WIQ1QYfu1KHbEbRlJp9X7awwwjqqcJu54cOuBJTJ'
 				})

@@ -13,7 +13,8 @@ angular.module('app').factory('Widgets', ['$resource',
 				headers: authHeaders
 			},
 			create: {
-				method: 'POST'
+				method: 'POST',
+				headers: authHeaders
 			}
 		});
 	}
