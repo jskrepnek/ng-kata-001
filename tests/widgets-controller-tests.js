@@ -1,8 +1,11 @@
 describe('the widgets controller', function() {
 
-	var scope, widgetsController;
+	var scope, widgetsController,
+		Widgets;
 
 	beforeEach(function() {
+
+		Widgets = jasmine.createSpyObj('Widgets', ['query']);;
 
 		module('app');
 
@@ -10,7 +13,8 @@ describe('the widgets controller', function() {
 
 			scope = $rootScope.$new();
 			widgetsController = $controller('WidgetsController', {
-				$scope: scope
+				$scope: scope,
+				Widgets: Widgets
 			});
 
 		});
@@ -21,4 +25,9 @@ describe('the widgets controller', function() {
 		expect(widgetsController).toBeDefined();
 	});
 
+	describe('on initialization', function() {
+		it('should query the Widgets service', function() {
+			expect(Widgets.query).toHaveBeenCalled();
+		});
+	});
 });

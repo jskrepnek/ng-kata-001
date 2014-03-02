@@ -1,5 +1,6 @@
-angular.module('app').controller('WidgetsController', [function () {
+angular.module('app').controller('WidgetsController', ['Widgets', 
+	function (Widgets) {
 
-	return {};
-	
+		Widgets.query();
+
 }]);
