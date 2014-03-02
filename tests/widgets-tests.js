@@ -81,5 +81,32 @@ describe('the widgets service', function() {
 
 			$httpBackend.verifyNoOutstandingExpectation();
 		});
+
+		beforeEach(function() {
+			this.addMatchers({
+				toEqualData: function(expected) {
+					return angular.equals(this.actual, expected);
+				}
+			});
+		});
+
+		it('should return an array of Widgets', function() {
+
+			var response = "{\"results\":[{\"name\":\"test\",\"createdAt\":\"2014-03-02T19:27:06.717Z\",\"updatedAt\":\"2014-03-02T19:27:06.717Z\",\"objectId\":\"9TQhhuTjcw\"}]}";
+
+			$httpBackend
+				.expectGET('https://api.parse.com/1/classes/widgets')
+				.respond(response);
+
+			var actualData = widgets.query();
+			$httpBackend.flush();
+
+			expect(actualData).toEqualData([{
+				name: "test",
+				createdAt: "2014-03-02T19:27:06.717Z",
+				updatedAt: "2014-03-02T19:27:06.717Z",
+				objectId: "9TQhhuTjcw"
+			}]);
+		});
 	});
 });

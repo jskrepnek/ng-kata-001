@@ -10,7 +10,11 @@ angular.module('app').factory('Widgets', ['$resource',
 			query: {
 				method: 'GET',
 				isArray: true,
-				headers: authHeaders
+				headers: authHeaders,
+				transformResponse: function(data) {
+					var deData = angular.fromJson(data);
+					return deData.results;
+				}
 			},
 			create: {
 				method: 'POST',
