@@ -34,7 +34,7 @@ describe('the widgets service', function() {
 					"Accept": "application/json, text/plain, */*",
 					"Content-Type": "application/json;charset=utf-8",
 					'X-Parse-Application-Id': 'kXIwOzlPDyw0Ix1r8z1RlaNyK10CfDO4ww9067ZW',
-					'X-Parse-REST-API-Key': 'WIQ1QYfu1KHbEbRlJp9X7awwwjqqcJu54cOuBJTJ'
+					'X-Parse-REST-API-Key': 'wqLjO3gtMzZS34fWO7Y8UYou5nVWKi4MrhLqTl0a'
 				})
 				.respond(201, '');
 
@@ -72,7 +72,7 @@ describe('the widgets service', function() {
 				.expectGET('https://api.parse.com/1/classes/widgets', {
 					"Accept": "application/json, text/plain, */*",
 					'X-Parse-Application-Id': 'kXIwOzlPDyw0Ix1r8z1RlaNyK10CfDO4ww9067ZW',
-					'X-Parse-REST-API-Key': 'WIQ1QYfu1KHbEbRlJp9X7awwwjqqcJu54cOuBJTJ'
+					'X-Parse-REST-API-Key': 'wqLjO3gtMzZS34fWO7Y8UYou5nVWKi4MrhLqTl0a'
 				})
 				.respond([]);
 

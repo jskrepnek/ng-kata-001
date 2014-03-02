@@ -3,7 +3,7 @@ angular.module('app').factory('Widgets', ['$resource',
 
 		var authHeaders = {
 			'X-Parse-Application-Id': 'kXIwOzlPDyw0Ix1r8z1RlaNyK10CfDO4ww9067ZW',
-			'X-Parse-REST-API-Key': 'WIQ1QYfu1KHbEbRlJp9X7awwwjqqcJu54cOuBJTJ'
+			'X-Parse-REST-API-Key': 'wqLjO3gtMzZS34fWO7Y8UYou5nVWKi4MrhLqTl0a'
 		};
 
 		return $resource('https://api.parse.com/1/classes/widgets', {}, {
