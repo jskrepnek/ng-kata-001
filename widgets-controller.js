@@ -1,6 +1,6 @@
-angular.module('app').controller('WidgetsController', ['Widgets', 
-	function (Widgets) {
+angular.module('app').controller('WidgetsController', ['$scope', 'Widgets', 
+	function ($scope, Widgets) {
 
-		Widgets.query();
+		$scope.widgets = Widgets.query();
 
 }]);
