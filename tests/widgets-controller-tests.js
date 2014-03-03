@@ -49,4 +49,12 @@ describe('the widgets controller', function() {
 			expect(scope.widgets).toEqual(widgets);
 		});
 	});
+
+	describe('create method', function() {
+
+		it('should be defined on the scope', function() {
+			expect(scope.create).toBeDefined();
+		});
+
+	});
 });

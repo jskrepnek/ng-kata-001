@@ -3,4 +3,7 @@ angular.module('app').controller('WidgetsController', ['$scope', 'Widgets',
 
 		$scope.widgets = Widgets.query();
 
+		$scope.create = function() {
+		};
+
 }]);
