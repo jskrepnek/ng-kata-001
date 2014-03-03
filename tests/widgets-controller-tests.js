@@ -11,7 +11,7 @@ describe('the widgets controller', function() {
 			name: 'Widget 2'
 		}];
 
-		Widgets = jasmine.createSpyObj('Widgets', ['query']);
+		Widgets = jasmine.createSpyObj('Widgets', ['query', 'create']);
 
 		Widgets.query.andReturn(widgets);
 
@@ -54,6 +54,22 @@ describe('the widgets controller', function() {
 
 		it('should be defined on the scope', function() {
 			expect(scope.create).toBeDefined();
+		});
+
+		describe('when invoked with a new widget name', function() {
+
+			var newWidgetName = 'Widgettty';
+
+			beforeEach(function() {
+				scope.create(newWidgetName);
+			})
+
+			it('should make a call to the Widgets service create action with a new widget', function() {
+				expect(Widgets.create).toHaveBeenCalledWith({
+					name: newWidgetName
+				});
+			});
+
 		});
 
 	});
