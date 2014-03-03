@@ -62,12 +62,16 @@ describe('the widgets controller', function() {
 
 			beforeEach(function() {
 				scope.create(newWidgetName);
-			})
+			});
 
 			it('should make a call to the Widgets service create action with a new widget', function() {
 				expect(Widgets.create).toHaveBeenCalledWith({
 					name: newWidgetName
 				});
+			});
+
+			it('should add the new widget to the end of the widgets view model array property on the scope', function() {
+				expect(scope.widgets[scope.widgets.length - 1].name).toEqual(newWidgetName);
 			});
 
 		});

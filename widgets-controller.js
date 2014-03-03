@@ -11,6 +11,8 @@ angular.module('app').controller('WidgetsController', ['$scope', 'Widgets',
 
 			Widgets.create(newWidget);
 
+			$scope.widgets.push(newWidget);
+
 		};
 
 }]);
